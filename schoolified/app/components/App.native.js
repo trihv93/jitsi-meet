@@ -17,7 +17,7 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <StatusBar barStyle="dark-content" />
+          <StatusBar barStyle="dark-content" hidden />
           <SafeAreaProvider>
             <NavigationContainer>
               <Stack.Navigator initialRouteName="Login">

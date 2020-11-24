@@ -1,60 +1,111 @@
 import React from 'react';
-import SplashScreen from 'react-native-splash-screen';
-import { View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { FontSize, MediumButton } from '../../../../globals/demensions';
+import {
+  MarginSize,
+  FontWeight,
+} from '../../../../globals/demensions';
 import Colors from '../../../../globals/colors';
-import { App } from '../../../../../react/features/app/components';
+import Res from '../../../../res';
 
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: '',
-      password: '',
-    };
-  }
-
-  componentDidMount() {
-    SplashScreen.hide();
-  }
-
-  changeText = (key, value) => {
-    this.setState({
-      [key]: value,
-    });
-  };
-
-  renderTextInput = (placeholder, key) => {
+  renderHeader = () => {
     return (
-      <View style={styles.textInputView}>
-        <TextInput
-          style={styles.textInput}
-          placeholder={placeholder}
-          onChangeText={(text) => this.changeText(key, text)}
-        />
+      <View style={styles.header}>
+        <View style={styles.leftView} />
+        <View style={styles.headerBody}>
+          <Text style={styles.welcomeLabel}>Welcome to</Text>
+          <Image
+            source={Res.ic_logo_horizontal}
+            style={{ width: 195, height: 50 }}
+          />
+        </View>
+        <TouchableOpacity style={styles.homeButton}>
+          <Image
+            resizeMode="contain"
+            source={Res.ic_button_logout}
+            style={styles.homeImage}
+          />
+        </TouchableOpacity>
       </View>
     );
   };
 
-  pressOnLogin = () => {};
-
-  renderButton = (title) => {
+  renderBody = () => {
     return (
-      <TouchableOpacity
-        style={styles.mediumButton}
-        onPress={() => this.pressOnLogin()}>
-        <Text style={styles.buttonTitle}>{title}</Text>
-      </TouchableOpacity>
+      <View style={styles.body}>
+        <View style={styles.helloSection}>
+          <Text style={styles.sectionTitle}>GoodMorning, Perter Pan</Text>
+          <Text style={styles.sectionDescription}>
+            Your class will start at 8AM
+          </Text>
+        </View>
+        <View style={styles.dateTimeSection}>
+          <Text style={{ ...styles.dateTitle, color: Colors.in_review }}>
+            TUESDAY
+          </Text>
+          <Text style={{ ...styles.dateTitle, marginTop: MarginSize.dpDouble }}>
+            NOV
+          </Text>
+          <Text
+            style={{
+              ...styles.dateTitle,
+              fontSize: 96,
+              color: Colors.in_review,
+            }}>
+            24
+          </Text>
+        </View>
+        <View style={styles.funFactSection}>
+          <View style={styles.infoSection}>
+            <Text
+              style={{ ...styles.sectionTitle, color: Colors.text_reversal }}>
+              Fun Fact of the Day
+            </Text>
+            <Text style={styles.sectionDescription}>
+              Almonds are a member of the peach family
+            </Text>
+          </View>
+          <View style={styles.funFactButtonsView}>
+            <TouchableOpacity style={styles.emailButton}>
+              <Image
+                resizeMode="contain"
+                source={Res.ic_notification}
+                style={styles.emailImage}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.emailButton}>
+              <Image
+                resizeMode="contain"
+                source={Res.ic_email}
+                style={styles.emailImage}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
+  renderButtons = () => {
+    return (
+      <View style={styles.buttonsView}>
+        <TouchableOpacity style={styles.classButton}>
+          <Text style={styles.classButtonTitle}>Classes</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.classButton}>
+          <Text style={styles.classButtonTitle}>Assignments</Text>
+        </TouchableOpacity>
+      </View>
     );
   };
 
   render() {
     return (
       <View style={styles.container}>
-        {this.renderTextInput('UserName', 'userName')}
-        {this.renderTextInput('Password', 'password')}
-        {this.renderButton('Login')}
+        {this.renderHeader()}
+        {this.renderBody()}
+        {this.renderButtons()}
       </View>
     );
   }
@@ -70,37 +121,161 @@ export default connect(mapStateToProps, null)(Main);
 
 const styles = {
   container: {
-    backgroundColor: 'white',
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: Colors.main_bg,
   },
-  mediumButton: {
+  header: {
+    flexDirection: 'row',
+    marginTop: MarginSize.dp6X,
+  },
+  welcomeLabel: {
+    fontSize: 28,
+    marginRight: MarginSize.dpSingle,
+    marginTop: MarginSize.dpHalf,
+    fontWeight: FontWeight.medium,
+  },
+  headerBody: {
+    flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width: MediumButton.width,
-    height: MediumButton.height,
+  },
+  homeImage: {
+    width: 25,
+    height: 25,
+  },
+  body: {
+    flexDirection: 'row',
+    marginTop: MarginSize.dp11X,
+    marginLeft: MarginSize.dp12X,
+    marginRight: MarginSize.dp8X,
+  },
+  helloSection: {
+    flex: 2,
+    height: 250,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: Colors.button,
-    borderRadius: MediumButton.height / 2,
+    borderRadius: 15,
+    borderWidth: 10,
+    borderColor: Colors.text_reversal,
   },
-  textInputView: {
-    width: MediumButton.width,
-    height: MediumButton.height,
-    borderRadius: MediumButton.height / 2,
-    borderWidth: 0.5,
-    marginBottom: 30,
-    borderColor: Colors.alpha_divider_a30,
-  },
-  textInput: {
+  dateTimeSection: {
     flex: 1,
+    height: 250,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.bg_black,
+    marginLeft: MarginSize.dp5X,
+    marginRight: MarginSize.dp5X,
+    borderRadius: 15,
+    borderWidth: 12,
+    borderColor: Colors.text_reversal,
+  },
+  funFactSection: {
+    flex: 2,
+    height: 250,
+    flexDirection: 'row',
+  },
+  infoSection: {
+    flex: 1,
+    height: 250,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.fun_fact,
+    borderRadius: 15,
+    borderWidth: 10,
+    borderColor: Colors.text_reversal,
+  },
+  dateTitle: {
+    fontSize: 35,
+    fontWeight: FontWeight.bold,
+    color: Colors.text_reversal,
+  },
+  sectionTitle: {
+    fontSize: 32,
     textAlign: 'center',
-  },
-  title: {
-    fontSize: FontSize.title,
+    fontWeight: FontWeight.bold,
+    marginBottom: MarginSize.dp5X,
     color: Colors.text_reversal,
+    paddingLeft: MarginSize.dp4X,
+    paddingRight: MarginSize.dp4X,
   },
-  buttonTitle: {
-    fontSize: FontSize.buttonTitle,
-    color: Colors.text_reversal,
+  sectionDescription: {
+    fontSize: 20,
+    fontWeight: FontWeight.normal,
+    paddingLeft: MarginSize.dp3X,
+    paddingRight: MarginSize.dp3X,
+  },
+  funFactButtonsView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: MarginSize.dp6X,
+  },
+  homeButton: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 3,
+    shadowColor: Colors.text_description,
+    shadowOpacity: 0.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.white_bg,
+    marginLeft: MarginSize.dp8X,
+    marginRight: MarginSize.dp8X,
+    marginTop: MarginSize.dp3X,
+  },
+  leftView: {
+    width: 60,
+    height: 60,
+    marginLeft: MarginSize.dp8X,
+    marginRight: MarginSize.dp8X,
+    marginTop: MarginSize.dp3X,
+  },
+  emailButton: {
+    width: 75,
+    height: 75,
+    borderRadius: 15,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 3,
+    shadowColor: Colors.text_description,
+    shadowOpacity: 0.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.white_bg,
+    marginBottom: MarginSize.dp3X,
+    marginTop: MarginSize.dp3X,
+  },
+  emailImage: {
+    width: 30,
+    height: 30,
+  },
+  classButton: {
+    flex: 1,
+    height: 220,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.white_bg,
+    borderRadius: 15,
+    marginLeft: MarginSize.dp6X,
+    marginRight: MarginSize.dp6X,
+    shadowRadius: 15,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 3,
+    shadowColor: Colors.text_description,
+    shadowOpacity: 0.5,
+  },
+  classButtonTitle: {
+    fontSize: 32,
+    fontWeight: FontWeight.bold,
+    color: Colors.text_description,
+  },
+  buttonsView: {
+    flexDirection: 'row',
+    marginTop: MarginSize.dp11X,
+    marginLeft: MarginSize.dp8X,
+    marginRight: MarginSize.dp8X,
   },
 };

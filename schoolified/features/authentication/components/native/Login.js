@@ -1,6 +1,6 @@
 import React from 'react';
 import SplashScreen from 'react-native-splash-screen';
-import { View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { FontSize, MediumButton } from '../../../../globals/demensions';
 import Colors from '../../../../globals/colors';
@@ -9,6 +9,7 @@ import AbstractAuthentication, {
   mapDispatchToProps,
   mapStateToProps,
 } from '../../AbstractAuthentication';
+import Res from '../../../../res';
 
 class Login extends AbstractAuthentication<Props> {
   constructor(props) {
@@ -49,7 +50,7 @@ class Login extends AbstractAuthentication<Props> {
   renderButton = (title) => {
     return (
       <TouchableOpacity
-        style={styles.mediumButton}
+        style={styles.loginButton}
         onPress={() => this.pressOnLogin()}>
         <Text style={styles.buttonTitle}>{title}</Text>
       </TouchableOpacity>
@@ -59,6 +60,7 @@ class Login extends AbstractAuthentication<Props> {
   render() {
     return (
       <View style={styles.container}>
+        <Image resizeMode="cover" source={Res.ic_logo} style={styles.logo} />
         {this.renderTextInput('UserName', 'userName')}
         {this.renderTextInput('Password', 'password')}
         {this.renderButton('Login')}
@@ -76,13 +78,14 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
   },
-  mediumButton: {
+  loginButton: {
     justifyContent: 'center',
     alignItems: 'center',
     width: MediumButton.width,
     height: MediumButton.height,
     backgroundColor: Colors.button,
     borderRadius: MediumButton.height / 2,
+    marginBottom: 150,
   },
   textInputView: {
     width: MediumButton.width,
@@ -103,5 +106,10 @@ const styles = {
   buttonTitle: {
     fontSize: FontSize.buttonTitle,
     color: Colors.text_reversal,
+  },
+  logo: {
+    width: 150,
+    height: 101,
+    marginBottom: 50,
   },
 };

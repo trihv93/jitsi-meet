@@ -1,6 +1,4 @@
-import {
-  Dimensions,
-} from 'react-native';
+import { Dimensions } from 'react-native';
 
 export const { width, height } = Dimensions.get('window');
 
@@ -68,4 +66,10 @@ export const FontSize = {
   small: 10,
   chatMessage: 15,
   smallTitle: 11,
+};
+
+export const FontWeight = {
+  normal: '400',
+  medium: '600',
+  bold: 'bold',
 };
