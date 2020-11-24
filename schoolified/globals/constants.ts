@@ -1,5 +1,7 @@
 export const ScreenName = {
   Login: 'Login',
+  Main: 'Main',
+  ClassList: 'ClassList',
 };
 
 export const KeyBoardType = {

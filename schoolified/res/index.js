@@ -5,4 +5,5 @@ export default {
   ic_button_logout: require('./ic_button_logout.png'),
   ic_email: require('./ic_email.png'),
   ic_notification: require('./ic_notification.png'),
+  ic_broadcast: require('./ic_broadcast.png'),
 };

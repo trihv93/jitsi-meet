@@ -52,20 +52,11 @@ export const MarginSize = {
 };
 
 export const FontSize = {
+  small: 14,
+  normal: 16,
+  medium: 18,
+  large: 20,
   title: 24,
-  pageTitles: 18,
-  paragraphText: 14,
-  listTitles: 14,
-  importantText: 16,
-  captions: 14,
-  secondaryText: 14,
-  buttonTitle: 14,
-  tabsText: 14,
-  textInput: 16,
-  normal: 12,
-  small: 10,
-  chatMessage: 15,
-  smallTitle: 11,
 };
 
 export const FontWeight = {

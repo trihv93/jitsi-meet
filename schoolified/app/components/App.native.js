@@ -8,6 +8,8 @@ import { PersistGate } from 'redux-persist/es/integration/react';
 import configureStore from '../../reducers/stores';
 import { Login } from '../../features/authentication';
 import { Main } from '../../features/main';
+import { ClassList } from '../../features/class';
+import { ScreenName } from '../../globals/constants';
 
 const Stack = createStackNavigator();
 export const { store, persistor } = configureStore();
@@ -20,15 +22,20 @@ class App extends React.Component {
           <StatusBar barStyle="dark-content" hidden />
           <SafeAreaProvider>
             <NavigationContainer>
-              <Stack.Navigator initialRouteName="Login">
+              <Stack.Navigator initialRouteName={ScreenName.Login}>
                 <Stack.Screen
-                  name="Login"
+                  name={ScreenName.Login}
                   component={Login}
                   options={{ headerShown: false }}
                 />
                 <Stack.Screen
-                  name="Main"
+                  name={ScreenName.Main}
                   component={Main}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name={ScreenName.ClassList}
+                  component={ClassList}
                   options={{ headerShown: false }}
                 />
               </Stack.Navigator>

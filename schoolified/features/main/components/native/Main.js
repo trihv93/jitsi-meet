@@ -1,12 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
-import {
-  MarginSize,
-  FontWeight,
-} from '../../../../globals/demensions';
+import { MarginSize, FontWeight } from '../../../../globals/demensions';
 import Colors from '../../../../globals/colors';
 import Res from '../../../../res';
+import { ScreenName } from '../../../../globals/constants';
 
 class Main extends React.Component {
   renderHeader = () => {
@@ -88,9 +86,14 @@ class Main extends React.Component {
   };
 
   renderButtons = () => {
+    const { navigation } = this.props;
     return (
       <View style={styles.buttonsView}>
-        <TouchableOpacity style={styles.classButton}>
+        <TouchableOpacity
+          style={styles.classButton}
+          onPress={() => {
+            navigation.navigate(ScreenName.ClassList);
+          }}>
           <Text style={styles.classButtonTitle}>Classes</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.classButton}>
@@ -213,11 +216,11 @@ const styles = {
     margin: MarginSize.dp6X,
   },
   homeButton: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 3,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    shadowOffset: { width: 0, height: 1 },
+    elevation: 1,
     shadowColor: Colors.text_description,
     shadowOpacity: 0.5,
     justifyContent: 'center',
@@ -238,8 +241,8 @@ const styles = {
     width: 75,
     height: 75,
     borderRadius: 15,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 3,
+    shadowOffset: { width: 0, height: 1 },
+    elevation: 1,
     shadowColor: Colors.text_description,
     shadowOpacity: 0.5,
     justifyContent: 'center',
@@ -258,17 +261,17 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.white_bg,
-    borderRadius: 15,
+    borderRadius: 20,
     marginLeft: MarginSize.dp6X,
     marginRight: MarginSize.dp6X,
     shadowRadius: 15,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 3,
+    shadowOffset: { width: 0, height: 1 },
+    elevation: 1,
     shadowColor: Colors.text_description,
     shadowOpacity: 0.5,
   },
   classButtonTitle: {
-    fontSize: 32,
+    fontSize: 30,
     fontWeight: FontWeight.bold,
     color: Colors.text_description,
   },

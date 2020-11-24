@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     color: Colors.text_reversal,
   },
   buttonTitle: {
-    fontSize: FontSize.buttonTitle,
+    fontSize: FontSize.normal,
     color: Colors.text_reversal,
   }
 });

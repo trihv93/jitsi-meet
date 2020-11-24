@@ -349,7 +349,7 @@ export default {
   text: '#000000',
   bg_black: '#000000',
   main_bg: '#ECF0F3',
-    white_bg: '#FFFFFF',
+  white_bg: '#FFFFFF',
   text_reversal: '#FFFFFF',
   text_description: '#777777',
   filter_icon: '#3B4043',

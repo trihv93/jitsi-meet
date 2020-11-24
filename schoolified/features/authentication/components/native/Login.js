@@ -10,6 +10,7 @@ import AbstractAuthentication, {
   mapStateToProps,
 } from '../../AbstractAuthentication';
 import Res from '../../../../res';
+import { ScreenName } from '../../../../globals/constants';
 
 class Login extends AbstractAuthentication<Props> {
   constructor(props) {
@@ -44,7 +45,7 @@ class Login extends AbstractAuthentication<Props> {
 
   pressOnLogin = () => {
     const { navigation } = this.props;
-    navigation.navigate('Main');
+    navigation.navigate(ScreenName.Main);
   };
 
   renderButton = (title) => {
@@ -104,7 +105,7 @@ const styles = {
     color: Colors.text_reversal,
   },
   buttonTitle: {
-    fontSize: FontSize.buttonTitle,
+    fontSize: FontSize.normal,
     color: Colors.text_reversal,
   },
   logo: {
