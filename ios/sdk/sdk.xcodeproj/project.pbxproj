@@ -62,6 +62,9 @@
 		DEFE535621FB2E8300011A3A /* ReactUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFE535521FB2E8300011A3A /* ReactUtils.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		03F2ADC957FF109849B7FCA1 /* libPods-JitsiMeet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JitsiMeet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B412F161EDEC65D00B1A0A6 /* JitsiMeetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JitsiMeetView.h; sourceTree = "<group>"; };
@@ -146,6 +149,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04924869256BBCFA001B8402 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A3506933FA7E4D7492C3A115 /* libRNCMaskedView.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		0BCA49681EC4BBE500B793EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +186,8 @@
 				0BD906E61EC0C00300C8C18E /* Products */,
 				0BCA49681EC4BBE500B793EE /* Resources */,
 				0BD906E71EC0C00300C8C18E /* src */,
+				5DEDD4F86B244152B75B4239 /* Libraries */,
+				04924869256BBCFA001B8402 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,6 +244,13 @@
 				C8AFD27E2462C613000293D2 /* InfoPlistUtil.m */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		5DEDD4F86B244152B75B4239 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 		9C3C6FA2341729836589B856 /* Frameworks */ = {
@@ -365,12 +385,17 @@
 			mainGroup = 0BD906DB1EC0C00300C8C18E;
 			productRefGroup = 0BD906E61EC0C00300C8C18E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+			);
 			projectRoot = "";
 			targets = (
 				0BD906E41EC0C00300C8C18E /* JitsiMeet */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0BD906E31EC0C00300C8C18E /* Resources */ = {
@@ -648,6 +673,9 @@
 				INFOPLIST_FILE = src/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.jitsi.JitsiMeetSDK.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -678,6 +706,9 @@
 				INFOPLIST_FILE = src/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.jitsi.JitsiMeetSDK.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

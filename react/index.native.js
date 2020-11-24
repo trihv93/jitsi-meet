@@ -6,8 +6,10 @@ import './features/mobile/polyfills';
 
 import React, { PureComponent } from 'react';
 import { AppRegistry } from 'react-native';
+//
+// import { App } from './features/app/components';
+import {App} from '../schoolified/app/components';
 
-import { App } from './features/app/components';
 import { _initLogging } from './features/base/logging/functions';
 import { IncomingCallApp } from './features/mobile/incoming-call';
 
