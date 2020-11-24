@@ -1,1 +1,1 @@
-export * from './components/index.native'
+export * from './components/index.native';

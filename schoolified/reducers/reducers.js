@@ -4,13 +4,22 @@ import { authenticationReducer } from '../features/authentication';
 import FilesystemStorage from 'redux-persist-filesystem-storage';
 
 const authenticationConfig = {
-    key: 'authentication',
-    storage: FilesystemStorage,
-    whitelist: ['isAuthenticated', 'accessToken', 'userInfo', 'email', 'defaultAvatars'],
+  key: 'authentication',
+  storage: FilesystemStorage,
+  whitelist: [
+    'isAuthenticated',
+    'accessToken',
+    'userInfo',
+    'email',
+    'defaultAvatars',
+  ],
 };
 
 const rootReducer = combineReducers({
-    authenticationReducer: persistReducer(authenticationConfig, authenticationReducer),
+  authenticationReducer: persistReducer(
+    authenticationConfig,
+    authenticationReducer,
+  ),
 });
 
 export default rootReducer;

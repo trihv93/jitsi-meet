@@ -1,2 +1,2 @@
-export App from './App.native'
-export Web from './App.web'
+export App from './App.native';
+export Web from './App.web';
