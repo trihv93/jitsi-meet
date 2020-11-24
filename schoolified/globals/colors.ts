@@ -359,6 +359,7 @@ export default {
   button: '#00C853',
   fun_fact: '#e67e22',
   in_review: '#8e44ad',
+    green: '#00e640',
   wookbook: {
     black: '#000000',
     grey1: '#000000',

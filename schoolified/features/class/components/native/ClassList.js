@@ -17,6 +17,7 @@ import AbstractClass, {
 } from '../../AbstractClass';
 import Res from '../../../../res';
 import ClassListItem from './ClassListItem';
+import ClassDetails from './ClassDetails';
 import { NavBar } from '../../../../common';
 
 class ClassList extends AbstractClass<Props> {
@@ -39,7 +40,9 @@ class ClassList extends AbstractClass<Props> {
               renderItem={({ item, index }) => this.renderItem(item)}
             />
           </View>
-          <View style={{ flex: 3, backgroundColor: Colors.fun_fact }} />
+          <View style={styles.detailsView}>
+            <ClassDetails />
+          </View>
         </View>
       </View>
     );
@@ -57,5 +60,9 @@ const styles = {
     backgroundColor: 'white',
     flex: 1,
     flexDirection: 'row',
+  },
+  detailsView: {
+    flex: 3,
+    backgroundColor: Colors.main_bg,
   },
 };

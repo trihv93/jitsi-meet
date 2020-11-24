@@ -6,4 +6,5 @@ export default {
   ic_email: require('./ic_email.png'),
   ic_notification: require('./ic_notification.png'),
   ic_broadcast: require('./ic_broadcast.png'),
+  ic_broadcast_white: require('./ic_broadcast_white.png'),
 };

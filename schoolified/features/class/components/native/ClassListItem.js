@@ -38,6 +38,8 @@ const styles = {
     height: 120,
     borderRadius: 15,
     margin: MarginSize.dpDouble,
+    marginLeft: MarginSize.dp4X,
+    marginRight: MarginSize.dp4X,
     backgroundColor: 'white',
     shadowOffset: { width: 0, height: 3 },
     elevation: 3,
