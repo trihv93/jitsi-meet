@@ -1,6 +1,5 @@
 {
   "name": "jitsi-meet",
-  "main": "lib/index.js",
   "version": "0.0.0",
   "description": "A sample app for the Jitsi Videobridge",
   "repository": {
@@ -165,8 +164,6 @@
     "lint": "eslint . && flow",
     "postinstall": "jetify",
     "validate": "npm ls",
-    "build": "babel src/ -d lib/",
-    "prepublish": "npm run build",
     "flow": "flow"
   },
   "browser": {

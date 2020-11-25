@@ -14,7 +14,7 @@ import { ScreenName } from '../../globals/constants';
 const Stack = createStackNavigator();
 export const { store, persistor } = configureStore();
 
-class App extends React.Component {
+export class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
@@ -46,5 +46,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
