@@ -1,5 +1,6 @@
 {
   "name": "jitsi-meet",
+  "main": "lib/index.js",
   "version": "0.0.0",
   "description": "A sample app for the Jitsi Videobridge",
   "repository": {
@@ -114,7 +115,8 @@
     "zxcvbn": "4.4.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
     "@babel/plugin-proposal-class-properties": "7.1.0",
     "@babel/plugin-proposal-export-default-from": "7.0.0",
     "@babel/plugin-proposal-export-namespace-from": "7.0.0",
@@ -122,7 +124,7 @@
     "@babel/plugin-proposal-optional-chaining": "7.2.0",
     "@babel/plugin-transform-flow-strip-types": "7.0.0",
     "@babel/preset-env": "7.1.0",
-    "@babel/preset-flow": "7.0.0",
+    "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "7.0.0",
     "@babel/runtime": "^7.5.5",
     "babel-eslint": "10.0.1",
@@ -140,7 +142,7 @@
     "eslint-plugin-react": "7.11.1",
     "eslint-plugin-react-native": "3.3.0",
     "expose-loader": "0.7.5",
-    "flow-bin": "0.104.0",
+    "flow-bin": "^0.104.0",
     "imports-loader": "0.7.1",
     "jetifier": "1.6.4",
     "metro-react-native-babel-preset": "0.56.0",
@@ -162,7 +164,10 @@
   "scripts": {
     "lint": "eslint . && flow",
     "postinstall": "jetify",
-    "validate": "npm ls"
+    "validate": "npm ls",
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build",
+    "flow": "flow"
   },
   "browser": {
     "jQuery-Impromptu": "jQuery-Impromptu/src/jquery-impromptu.js"

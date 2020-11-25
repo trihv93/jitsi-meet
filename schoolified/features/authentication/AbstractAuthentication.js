@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import { Dispatch } from 'redux';
 import { login } from './actions';
 
@@ -10,8 +9,6 @@ export type Props = {
   loginSuccess: Boolean,
   loginMessage: String,
 };
-
-export default class AbstractAuthentication<P: Props> extends Component<P> {}
 
 export function mapDispatchToProps(dispatch: Dispatch<any>) {
   return {

@@ -6,13 +6,13 @@ import Colors from '../../../../globals/colors';
 import Res from '../../../../res';
 import { ScreenName } from '../../../../globals/constants';
 
-class Main extends React.Component {
-  logOut = () => {
-    const { navigation } = this.props;
+const Main = (props: any) => {
+  const { navigation } = props;
+  const logOut = () => {
     navigation.goBack();
   };
 
-  renderHeader = () => {
+  const renderHeader = () => {
     return (
       <View style={styles.header}>
         <View style={styles.leftView} />
@@ -23,9 +23,7 @@ class Main extends React.Component {
             style={{ width: 195, height: 50 }}
           />
         </View>
-        <TouchableOpacity
-          style={styles.homeButton}
-          onPress={() => this.logOut()}>
+        <TouchableOpacity style={styles.homeButton} onPress={() => logOut()}>
           <Image
             resizeMode="contain"
             source={Res.ic_button_logout}
@@ -36,7 +34,7 @@ class Main extends React.Component {
     );
   };
 
-  renderBody = () => {
+  const renderBody = () => {
     return (
       <View style={styles.body}>
         <View style={styles.helloSection}>
@@ -92,8 +90,7 @@ class Main extends React.Component {
     );
   };
 
-  renderButtons = () => {
-    const { navigation } = this.props;
+  const renderButtons = () => {
     return (
       <View style={styles.buttonsView}>
         <TouchableOpacity
@@ -110,16 +107,14 @@ class Main extends React.Component {
     );
   };
 
-  render() {
-    return (
-      <View style={styles.container}>
-        {this.renderHeader()}
-        {this.renderBody()}
-        {this.renderButtons()}
-      </View>
-    );
-  }
-}
+  return (
+    <View style={styles.container}>
+      {renderHeader()}
+      {renderBody()}
+      {renderButtons()}
+    </View>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {

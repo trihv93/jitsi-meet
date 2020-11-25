@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import _ from 'lodash';
 import SplashScreen from 'react-native-splash-screen';
 import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { FontSize, MediumButton } from '../../../../globals/demensions';
 import Colors from '../../../../globals/colors';
-import AbstractAuthentication, {
+import {
   Props,
   mapDispatchToProps,
   mapStateToProps,
@@ -14,41 +14,49 @@ import Res from '../../../../res';
 import { LoadingDialog } from '../../../../common';
 import { ScreenName } from '../../../../globals/constants';
 
-class Login extends AbstractAuthentication<Props> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: '',
-      password: '',
-    };
-  }
+const Login = (props: Props) => {
+  const { onLogin, isLogging, loginSuccess, navigation } = props;
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
 
-  componentDidMount() {
+  useEffect(() => {
     SplashScreen.hide();
-  }
+  }, []);
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { isLogging, navigation } = this.props;
-    if (isLogging && !nextProps.isLogging) {
-      if (nextProps.loginSuccess) {
-        navigation.navigate(ScreenName.Main);
-      } else {
-        alert('Login failed');
-      }
-    }
-  }
-
-  changeText = (key, value) => {
-    this.setState({
-      [key]: value,
+  const usePrevious = (value) => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
     });
+    return ref.current;
   };
 
-  renderTextInput = (
+  const prevIsLogging = usePrevious(isLogging);
+
+  useEffect(() => {
+    if (prevIsLogging && !isLogging) {
+      if (loginSuccess) {
+        navigation.navigate(ScreenName.Main);
+      } else {
+        alert('Login failed.');
+      }
+    }
+  }, [isLogging]);
+
+  const changeText = (key, value) => {
+    if (key === 'userName') {
+      setUserName(value);
+    } else {
+      setPassword(value);
+    }
+  };
+
+  const renderTextInput = (
     placeholder: string,
     key: string,
     secureTextEntry = false,
   ) => {
+    const value = key === 'userName' ? userName : password;
     return (
       <View style={styles.textInputView}>
         <TextInput
@@ -56,15 +64,14 @@ class Login extends AbstractAuthentication<Props> {
           autoCapitalize="none"
           style={styles.textInput}
           placeholder={placeholder}
-          onChangeText={(text) => this.changeText(key, text)}
+          onChangeText={(text) => changeText(key, text)}
+          value={value}
         />
       </View>
     );
   };
 
-  pressOnLogin = () => {
-    const { onLogin } = this.props;
-    const { userName, password } = this.state;
+  const pressOnLogin = () => {
     if (_.isEmpty(userName) || _.isEmpty(password)) {
       alert('The username or password is empty, please input and try again.');
       return;
@@ -72,29 +79,26 @@ class Login extends AbstractAuthentication<Props> {
     onLogin(userName, password);
   };
 
-  renderButton = (title) => {
+  const renderButton = (title) => {
     return (
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => this.pressOnLogin()}>
+        onPress={() => pressOnLogin()}>
         <Text style={styles.buttonTitle}>{title}</Text>
       </TouchableOpacity>
     );
   };
 
-  render() {
-    const { isLogging } = this.props;
-    return (
-      <View style={styles.container}>
-        <Image resizeMode="cover" source={Res.ic_logo} style={styles.logo} />
-        {this.renderTextInput('UserName', 'userName')}
-        {this.renderTextInput('Password', 'password', true)}
-        {this.renderButton('Login')}
-        {isLogging && <LoadingDialog />}
-      </View>
-    );
-  }
-}
+  return (
+    <View style={styles.container}>
+      <Image resizeMode="cover" source={Res.ic_logo} style={styles.logo} />
+      {renderTextInput('UserName', 'userName')}
+      {renderTextInput('Password', 'password', true)}
+      {renderButton('Login')}
+      {isLogging && <LoadingDialog />}
+    </View>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 

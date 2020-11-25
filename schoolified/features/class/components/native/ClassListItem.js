@@ -6,27 +6,24 @@ import {
   FontWeight,
 } from '../../../../globals/demensions';
 import Colors from '../../../../globals/colors';
-import AbstractClass from '../../AbstractClass';
 import Res from '../../../../res';
 
 type Props = {
   item: Object,
 };
 
-class ClassListItem extends AbstractClass<Props> {
-  render() {
-    return (
-      <TouchableOpacity style={styles.container}>
-        <View style={{ flex: 1 }}>
-          <Text style={styles.title}>ENGLISH</Text>
-          <Text style={styles.description}>Test MyScript</Text>
-        </View>
-        <Image source={Res.ic_broadcast} style={styles.broadcastIcon} />
-        <Text>5:00 PM</Text>
-      </TouchableOpacity>
-    );
-  }
-}
+const ClassListItem = (props: Props) => {
+  return (
+    <TouchableOpacity style={styles.container}>
+      <View style={{ flex: 1 }}>
+        <Text style={styles.title}>ENGLISH</Text>
+        <Text style={styles.description}>Test MyScript</Text>
+      </View>
+      <Image source={Res.ic_broadcast} style={styles.broadcastIcon} />
+      <Text>5:00 PM</Text>
+    </TouchableOpacity>
+  );
+};
 
 export default ClassListItem;
 

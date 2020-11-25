@@ -1,52 +1,35 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  Image,
-  FlatList,
-} from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import {
   FontSize,
   FontWeight,
   MarginSize,
-  MediumButton,
 } from '../../../../globals/demensions';
 import Colors from '../../../../globals/colors';
-import AbstractClass, {
-  Props,
-  mapDispatchToProps,
-  mapStateToProps,
-} from '../../AbstractClass';
+import { mapDispatchToProps, mapStateToProps } from '../../AbstractClass';
 import Res from '../../../../res';
 
-class ClassDetails extends AbstractClass<Props> {
-  render() {
-    const { navigation } = this.props;
-    return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Image source={Res.ic_broadcast_white} style={styles.broadcastIcon} />
-          <Text style={styles.headerTitle}>
-            This class is current in session
-          </Text>
-        </View>
-        <View style={styles.titleView}>
-          <Text numberOfLines={1} style={styles.lessonTitle}>
-            SCIENCE
-          </Text>
-          <Text style={styles.time}>5:00 PM</Text>
-        </View>
-        <Text style={{ ...styles.description, color: Colors.text_description }}>
-          Create a lesson for this class
-        </Text>
-        <Text style={styles.description}>with Tri Dep Tri</Text>
+const ClassDetails = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Image source={Res.ic_broadcast_white} style={styles.broadcastIcon} />
+        <Text style={styles.headerTitle}>This class is current in session</Text>
       </View>
-    );
-  }
-}
+      <View style={styles.titleView}>
+        <Text numberOfLines={1} style={styles.lessonTitle}>
+          SCIENCE
+        </Text>
+        <Text style={styles.time}>5:00 PM</Text>
+      </View>
+      <Text style={{ ...styles.description, color: Colors.text_description }}>
+        Create a lesson for this class
+      </Text>
+      <Text style={styles.description}>with Tri Dep Tri</Text>
+    </View>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClassDetails);
 
