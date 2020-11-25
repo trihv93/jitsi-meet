@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
-import configureStore from '../../reducers/stores';
+import { configureStore } from '../../reducers/stores.native';
 import { Login } from '../../features/authentication';
 import { Main } from '../../features/main';
 import { ClassList } from '../../features/class';
