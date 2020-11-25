@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
@@ -31,7 +33,10 @@ const ClassDetails = () => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClassDetails);
+export default connect<*, *, *, *, *, *>(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ClassDetails);
 
 const styles = {
   container: {

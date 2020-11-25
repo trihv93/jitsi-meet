@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 import Colors from '../../../globals/colors';

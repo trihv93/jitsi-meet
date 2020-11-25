@@ -1,3 +1,5 @@
+// @flow
+
 import React, { useEffect, useState, useRef } from 'react';
 import _ from 'lodash';
 import SplashScreen from 'react-native-splash-screen';
@@ -5,8 +7,8 @@ import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { FontSize, MediumButton } from '../../../../globals/demensions';
 import Colors from '../../../../globals/colors';
+import type { Props } from '../../AbstractAuthentication';
 import {
-  Props,
   mapDispatchToProps,
   mapStateToProps,
 } from '../../AbstractAuthentication';
@@ -100,7 +102,10 @@ const Login = (props: Props) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect<*, *, *, *, *, *>(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Login);
 
 const styles = {
   container: {

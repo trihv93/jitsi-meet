@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { connect } from 'react-redux';
@@ -122,7 +124,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Main);
+export default connect<*, *, *, *, *, *>(mapStateToProps)(Main);
 
 const styles = {
   container: {

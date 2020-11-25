@@ -1,15 +1,11 @@
+// @flow
+
 import React from 'react';
-import {
-  View,
-  FlatList,
-} from 'react-native';
+import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import Colors from '../../../../globals/colors';
-import {
-  Props,
-  mapDispatchToProps,
-  mapStateToProps,
-} from '../../AbstractClass';
+import type { Props } from '../../AbstractClass';
+import { mapDispatchToProps, mapStateToProps } from '../../AbstractClass';
 import ClassListItem from './ClassListItem';
 import ClassDetails from './ClassDetails';
 import { NavBar } from '../../../../common';
@@ -41,7 +37,10 @@ const ClassList = (props: Props) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClassList);
+export default connect<*, *, *, *, *, *>(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ClassList);
 
 const styles = {
   container: {

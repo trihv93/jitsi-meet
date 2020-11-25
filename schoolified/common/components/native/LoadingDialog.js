@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { Text, View, ActivityIndicator } from 'react-native';
 import Colors from '../../../globals/colors';

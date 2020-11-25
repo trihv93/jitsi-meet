@@ -1,4 +1,6 @@
-import { Dispatch } from 'redux';
+// @flow
+
+import type { Dispatch } from 'redux';
 import { login } from './actions';
 
 export type Props = {
@@ -8,11 +10,12 @@ export type Props = {
   isLogging: Boolean,
   loginSuccess: Boolean,
   loginMessage: String,
+  navigation: Object,
 };
 
 export function mapDispatchToProps(dispatch: Dispatch<any>) {
   return {
-    onLogin(userName, password) {
+    onLogin(userName: string, password: any) {
       dispatch(login(userName, password));
     },
   };
