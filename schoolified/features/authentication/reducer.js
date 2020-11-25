@@ -5,7 +5,7 @@ const initialState = {
   loginSuccess: false,
   loginMessage: '',
   userInfo: null,
-  token: 'ABC',
+  token: '',
 };
 
 const authenticationReducer = (state = initialState, action) => {
@@ -16,7 +16,7 @@ const authenticationReducer = (state = initialState, action) => {
         isLogging: true,
         loginSuccess: false,
         loginMessage: '',
-        token: 'ABC',
+        token: '',
         userInfo: null,
       };
     case Types.AUTHENTICATE_SUCCESS: {

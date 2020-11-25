@@ -11,7 +11,7 @@ const loginSuccess = (result) => {
   return {
     type: Types.AUTHENTICATE_SUCCESS,
     token: result.token,
-    userInfo: result.userInfo,
+    userInfo: result.user,
   };
 };
 
@@ -27,7 +27,8 @@ export const login = (userName, password) => {
     dispatch(loginRequest());
     return Api.login(userName, password)
       .then((response) => {
-        if (response.success) {
+        console.log('BBBB', response);
+        if (!response.error && response.result) {
           dispatch(loginSuccess(response.result));
         } else {
           dispatch(loginFailure(response.message));

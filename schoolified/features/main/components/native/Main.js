@@ -7,6 +7,11 @@ import Res from '../../../../res';
 import { ScreenName } from '../../../../globals/constants';
 
 class Main extends React.Component {
+  logOut = () => {
+    const { navigation } = this.props;
+    navigation.goBack();
+  };
+
   renderHeader = () => {
     return (
       <View style={styles.header}>
@@ -18,7 +23,9 @@ class Main extends React.Component {
             style={{ width: 195, height: 50 }}
           />
         </View>
-        <TouchableOpacity style={styles.homeButton}>
+        <TouchableOpacity
+          style={styles.homeButton}
+          onPress={() => this.logOut()}>
           <Image
             resizeMode="contain"
             source={Res.ic_button_logout}

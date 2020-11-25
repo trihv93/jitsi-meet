@@ -12,3 +12,5 @@ export const KeyBoardType = {
   Number: 'number-pad',
   NumberAndPunctuation: 'numbers-and-punctuation',
 };
+
+export const BASE_URL = 'http://dev.api.schoolified.kitemetric.com';

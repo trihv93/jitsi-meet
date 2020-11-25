@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import SplashScreen from 'react-native-splash-screen';
 import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 import { connect } from 'react-redux';
@@ -10,6 +11,7 @@ import AbstractAuthentication, {
   mapStateToProps,
 } from '../../AbstractAuthentication';
 import Res from '../../../../res';
+import { LoadingDialog } from '../../../../common';
 import { ScreenName } from '../../../../globals/constants';
 
 class Login extends AbstractAuthentication<Props> {
@@ -25,16 +27,33 @@ class Login extends AbstractAuthentication<Props> {
     SplashScreen.hide();
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const { isLogging, navigation } = this.props;
+    if (isLogging && !nextProps.isLogging) {
+      if (nextProps.loginSuccess) {
+        navigation.navigate(ScreenName.Main);
+      } else {
+        alert('Login failed');
+      }
+    }
+  }
+
   changeText = (key, value) => {
     this.setState({
       [key]: value,
     });
   };
 
-  renderTextInput = (placeholder, key) => {
+  renderTextInput = (
+    placeholder: string,
+    key: string,
+    secureTextEntry = false,
+  ) => {
     return (
       <View style={styles.textInputView}>
         <TextInput
+          secureTextEntry={secureTextEntry}
+          autoCapitalize="none"
           style={styles.textInput}
           placeholder={placeholder}
           onChangeText={(text) => this.changeText(key, text)}
@@ -44,8 +63,13 @@ class Login extends AbstractAuthentication<Props> {
   };
 
   pressOnLogin = () => {
-    const { navigation } = this.props;
-    navigation.navigate(ScreenName.Main);
+    const { onLogin } = this.props;
+    const { userName, password } = this.state;
+    if (_.isEmpty(userName) || _.isEmpty(password)) {
+      alert('The username or password is empty, please input and try again.');
+      return;
+    }
+    onLogin(userName, password);
   };
 
   renderButton = (title) => {
@@ -59,12 +83,14 @@ class Login extends AbstractAuthentication<Props> {
   };
 
   render() {
+    const { isLogging } = this.props;
     return (
       <View style={styles.container}>
         <Image resizeMode="cover" source={Res.ic_logo} style={styles.logo} />
         {this.renderTextInput('UserName', 'userName')}
-        {this.renderTextInput('Password', 'password')}
+        {this.renderTextInput('Password', 'password', true)}
         {this.renderButton('Login')}
+        {isLogging && <LoadingDialog />}
       </View>
     );
   }

@@ -356,10 +356,12 @@ export default {
   divider: `#000000${ColorAlpha.a40}`, // bdc3c7
   alpha_divider: `#000000${ColorAlpha.a10}`,
   alpha_divider_a30: `#000000${ColorAlpha.a10}`,
+  loading_bg_dialog: `#000000${ColorAlpha.a30}`,
+  text_hint: '#A4A4A4',
   button: '#00C853',
   fun_fact: '#e67e22',
   in_review: '#8e44ad',
-    green: '#00e640',
+  green: '#00e640',
   wookbook: {
     black: '#000000',
     grey1: '#000000',
